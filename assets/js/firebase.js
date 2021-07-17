@@ -1,13 +1,22 @@
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-      apiKey: "AIzaSyBL4kIVmDW3LaGDzrMokG8FVJI4jk5ze9Y",
-      authDomain: "bridges-site.firebaseapp.com",
-      databaseURL: "https://bridges-site.firebaseio.com",
-      projectId: "bridges-site",
-      storageBucket: "bridges-site.appspot.com",
-      messagingSenderId: "207752526651",
-      appId: "1:207752526651:web:a4715f9c090a727c26551e",
-      measurementId: "G-R6GCN0T00S"
+      // apiKey: "AIzaSyBL4kIVmDW3LaGDzrMokG8FVJI4jk5ze9Y",
+      // authDomain: "bridges-site.firebaseapp.com",
+      // databaseURL: "https://bridges-site.firebaseio.com",
+      // projectId: "bridges-site",
+      // storageBucket: "bridges-site.appspot.com",
+      // messagingSenderId: "207752526651",
+      // appId: "1:207752526651:web:a4715f9c090a727c26551e",
+      // measurementId: "G-R6GCN0T00S"
+
+
+      apiKey: "AIzaSyBNsILUO37rSutMBsOVL6q5hyuZTpneuQg",
+      authDomain: "cnl-bridges.firebaseapp.com",
+      projectId: "cnl-bridges",
+      storageBucket: "cnl-bridges.appspot.com",
+      messagingSenderId: "618579449451",
+      appId: "1:618579449451:web:08ddfc8c2d22a11317432e",
+      measurementId: "G-G9Y6EHST98"
 };
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
