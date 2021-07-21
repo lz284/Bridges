@@ -9,13 +9,15 @@
         // appId: "1:207752526651:web:a4715f9c090a727c26551e",
         // measurementId: "G-R6GCN0T00S"
 
-        apiKey: "AIzaSyCaEwqUIq6LN2h7J-42Nnapta6MDk_HKSs",
-        authDomain: "cnl-gmu.firebaseapp.com",
-        projectId: "cnl-gmu",
-        storageBucket: "cnl-gmu.appspot.com",
-        messagingSenderId: "189559821492",
-        appId: "1:189559821492:web:cf061d5a39e0acdd84b3e1",
-        measurementId: "G-187425DZYZ"
+          apiKey: "AIzaSyCaEwqUIq6LN2h7J-42Nnapta6MDk_HKSs",
+          authDomain: "cnl-gmu.firebaseapp.com",
+          projectId: "cnl-gmu",
+          storageBucket: "cnl-gmu.appspot.com",
+          messagingSenderId: "189559821492",
+          appId: "1:189559821492:web:cf061d5a39e0acdd84b3e1",
+          measurementId: "G-187425DZYZ"
+
+
   };
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
