@@ -261,6 +261,31 @@ $("#forgot-password-button").click(function(){
   
 });
 
+
+/**
+ * HTTP function that supports CORS requests with credentials.
+ *
+ * @param {Object} req Cloud Function request context.
+ * @param {Object} res Cloud Function response context.
+ */
+ exports.corsEnabledFunctionAuth = (req, res) => {
+  // Set CORS headers for preflight requests
+  // Allows GETs from origin https://mydomain.com with Authorization header
+
+  res.set('Access-Control-Allow-Origin', 'https://cnl-gmu.firebaseapp.com');
+  res.set('Access-Control-Allow-Credentials', 'true');
+
+  if (req.method === 'OPTIONS') {
+    // Send response to OPTIONS requests
+    res.set('Access-Control-Allow-Methods', 'GET');
+    res.set('Access-Control-Allow-Headers', 'Authorization');
+    res.set('Access-Control-Max-Age', '3600');
+    res.status(204).send('');
+  } else {
+    res.send('Hello World!');
+  }
+};
+
 //File Storage
 const storage = firebase.storage();
 var file;
