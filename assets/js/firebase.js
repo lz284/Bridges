@@ -442,6 +442,7 @@
           console.log("Download Clicked");
             // Get the download URL
             itemRef.getDownloadURL().then(function(url) {
+             
               // Insert url into an <img> tag to "download"
               // This can be downloaded directly:
                   var xhr = new XMLHttpRequest();
