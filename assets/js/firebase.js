@@ -451,7 +451,7 @@
                   xhr.onload = function(event) {
                     var blob = xhr.response;
                   };
-                  xhr.open('GET', 'https://cors-anywhere.herokuapp.com/'+url);
+                  xhr.open('GET', url);
                   xhr.send();
             }).catch(function(error) {
   
