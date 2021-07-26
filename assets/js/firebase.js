@@ -22,7 +22,8 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
         firebase.auth();
-  
+
+
   // =======================================================================
   //                     Login Button (onClick)
   // =======================================================================
@@ -450,7 +451,7 @@
                   xhr.onload = function(event) {
                     var blob = xhr.response;
                   };
-                  xhr.open('GET', url);
+                  xhr.open('GET', 'https://cors-anywhere.herokuapp.com/'+url);
                   xhr.send();
             }).catch(function(error) {
   
