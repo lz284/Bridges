@@ -1,0 +1,22 @@
+<html>
+
+
+<body>
+
+var xhttp= new XMLHttpRequest();
+xhttp.onreadystatechange = function(){
+if (this.readyState == 4 && this.status ==200){
+    console.log(xhttp.responseText);
+}else{
+    console.log("error")
+}
+
+};
+
+xhttp.open("GET",'https://firebasestorage.googleapis.com/v0/b/cnl-gmu.appspot.com/o/main%2Fdocs%2Fa2.png?alt=media&token=3f72aed2-1dcf-4aac-9c9e-fcb29c0a69f6');
+xhttp.send();
+
+</body>
+
+
+</html>
