@@ -9,6 +9,15 @@
         // appId: "1:207752526651:web:a4715f9c090a727c26551e",
         // measurementId: "G-R6GCN0T00S"
 
+
+          // apiKey: "AIzaSyBNsILUO37rSutMBsOVL6q5hyuZTpneuQg",
+          // authDomain: "cnl-bridges.firebaseapp.com",
+          // projectId: "cnl-bridges",
+          // storageBucket: "cnl-bridges.appspot.com",
+          // messagingSenderId: "618579449451",
+          // appId: "1:618579449451:web:08ddfc8c2d22a11317432e",
+          // measurementId: "G-G9Y6EHST98"
+
           apiKey: "AIzaSyCaEwqUIq6LN2h7J-42Nnapta6MDk_HKSs",
           authDomain: "cnl-gmu.firebaseapp.com",
           projectId: "cnl-gmu",
