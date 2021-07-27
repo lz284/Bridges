@@ -64,8 +64,24 @@
 										<label id="user-file-label"></label>
 									</ul>
 								</div>
-								<button id= "btnStartUpload" class="button small wide smooth-scroll-middle" >Upload File</button>
+
+								<p><button id= "btnStartUpload" class="button small wide smooth-scroll-middle" >Upload File</button><p>
+							  
+
+
+								<div>
+									<div>
+										<p>Please enter the file name in the below box to get download url:
+										<input type="text" id="file" name="file"/><br>
+										<input type="button"  class="button small wide smooth-scroll-middle" value="Generate" onclick="generateDownloadLink()"/> <br>
+									     File URL:<br>
+										<span id="linkbox"></span>
+									    </p>
+									</div>
+								</div>
+
 							</div>
+
 						</div>
 						<div class="align-center">
 							<a id = "fun-button" href = "fun.html" class="button small wide smooth-scroll-middle disabled">Have a little fun</a>				
@@ -116,6 +132,23 @@
 					  }
 				});
 			</script>
+
+			<script>
+				var auth = firebase.auth();
+				var storageRef = firebase.storage().ref();
+				
+				function generateDownloadLink() {
+					var fileName = document.getElementById("file").value;
+					storageRef.child("images/" + fileName).getDownloadURL().then(function (url) {
+						document.getElementById('linkbox').innerHTML = '<a href="' + url + '">' + url + '</a>';
+					}).catch(function (error) {
+						console.log(error);
+						document.getElementById('linkbox').innerHTML = error.code;
+					});
+				}
+			</script>
+
+
 		<!-- Note: Only needed for demo purposes. Delete for production sites. -->
 			<script src="assets/js/demo.js"></script>
 
