@@ -1,20 +1,91 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    HTML Form
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>用户中心</title>
+	<style>
+		#cont {
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ 
 </head>
 <body>
-    <form>
-        <input type="button" value="ON" onclick="msg('ON')">
-        <input type="button" value="OFF" onclick="msg('OFF')">
-    </form>
-     <script>
-        function msg(x){
-            alert(x);
-        }
-        window.reload();
-        console.log(x)
-     </script>
+	<div id="select">
+		<select>
+			<option value="a">a</option>
+			<option value="b">b</option>
+			<option value="c">c</option>
+		</select>
+	</div>
+ 
+	<div id="cont">
+		
+	</div>
 
-       
+
+	
+ 
+	<script>
+		
+		// 选择框发生改变时
+		$('#select select').change(() => {
+			// 这里模拟后台返回数据,即将select值传回后台再返回数据后，在页面进行动态加载
+			if ($('#select select').val() == 'a'){
+				for(let i = 0; i < 1; i++) {
+					$('#cont').empty();
+					var dom = '';
+					dom += '<span>a</span><span>aa</span><span>aaa</span>';
+					$('#cont').append(dom);
+				}
+			}else if ($('#select select').val() == 'b') {
+				for(let i = 0; i < 1; i++) {
+					$('#cont').empty();
+					var dom = '';
+					dom += '<span>b</span><span>bb</span><span>bbb</span>';
+					$('#cont').append(dom);
+				}
+			}else {
+				for(let i = 0; i < 1; i++) {
+					$('#cont').empty();
+					var dom = '';
+					dom += '<span>c</span><span>cc</span><span>ccc</span>';
+					$('#cont').append(dom);
+				}
+			}
+ 
+		});
+ 
+ 
+	</script>
+
+<select name="" id="my-select">
+    <option value="111111">11111111</option>
+    <option value="222222">22222222</option>
+    <option value="333333">33333333</option>
+    <option value="444444">44444444</option>
+</select>
+<input type="text" id="my-input">
+
+
+
+<script type="text/javascript">
+$("#my-select").on("change",function () {//使用on进行事件绑定事件。
+    $("select option:selected").each(function () {//jq中的each()方法是遍历的对象的
+        $("#my-input").val($(this).text());//val()设置input的值，text()获取元素的文本内容。
+    })
+ });
+ </script>
+
+
+
+
+
+
+
 </body>
 </html>
