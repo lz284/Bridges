@@ -8,31 +8,18 @@
         // messagingSenderId: "207752526651",
         // appId: "1:207752526651:web:a4715f9c090a727c26551e",
         // measurementId: "G-R6GCN0T00S"
-
-
-          // apiKey: "AIzaSyBNsILUO37rSutMBsOVL6q5hyuZTpneuQg",
-          // authDomain: "cnl-bridges.firebaseapp.com",
-          // projectId: "cnl-bridges",
-          // storageBucket: "cnl-bridges.appspot.com",
-          // messagingSenderId: "618579449451",
-          // appId: "1:618579449451:web:08ddfc8c2d22a11317432e",
-          // measurementId: "G-G9Y6EHST98"
-
-          apiKey: "AIzaSyCaEwqUIq6LN2h7J-42Nnapta6MDk_HKSs",
-          authDomain: "cnl-gmu.firebaseapp.com",
-          projectId: "cnl-gmu",
-          storageBucket: "cnl-gmu.appspot.com",
-          messagingSenderId: "189559821492",
-          appId: "1:189559821492:web:cf061d5a39e0acdd84b3e1",
-          measurementId: "G-187425DZYZ"
-
-
+        apiKey: "AIzaSyCaEwqUIq6LN2h7J-42Nnapta6MDk_HKSs",
+        authDomain: "cnl-gmu.firebaseapp.com",
+        projectId: "cnl-gmu",
+        storageBucket: "cnl-gmu.appspot.com",
+        messagingSenderId: "189559821492",
+        appId: "1:189559821492:web:cf061d5a39e0acdd84b3e1",
+        measurementId: "G-187425DZYZ"
   };
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
         firebase.auth();
-
-
+  
   // =======================================================================
   //                     Login Button (onClick)
   // =======================================================================
@@ -272,20 +259,30 @@
     
   });
   
+ 
+   
   //File Storage
   const storage = firebase.storage();
+
   var file;
   var fileName;
   var storageRef = storage.ref().child;
   var userFileLabel = document.getElementById("user-file-label");
   let btnStartUpload = document.getElementById("btnStartUpload");
-  
   // =======================================================================
   //                     Upload Button (onClick)
   // =======================================================================
   //  function processes file upload to Firestore DB
   // =======================================================================
-  
+  var pathFolder;
+  $( "#selectFolder" ).val( "docs" ); //通过value值，设置对应的选中项
+
+$("#selectFolder").change(function(){
+    console.log($(this).val());
+    var pathFolder=$(this).val();
+		pathFolder="main/"+ pathFolder + "/" ;
+    $("#upload").load(location.href+" #upload>*","");   // refresh the uploaded files in a folder
+
   $("#btnStartUpload").click(function(e){
     btnStartUpload.disabled = true;
     //Call Upload Popup
@@ -340,7 +337,7 @@
           //Display File Name
           fileSelectedLabel.textContent = "Selected: " + fileName;
           //Create Storage Ref
-          storageRef = firebase.storage().ref('main/docs/' + file.name);
+          storageRef = firebase.storage().ref(pathFolder + file.name);
           //Create Submit Button for UI
           footer.appendChild(btnSubmit);
         });
@@ -403,11 +400,11 @@
   
       document.querySelector(".page-content").appendChild(popover);
   });
-  
   //Retrieving List
   // Create a reference under which you want to list
   // Find all the prefixes and items.
-  window.onload = firebase.storage().ref('main/docs/').listAll().then(function(res) {
+  window.onload = firebase.storage().ref(pathFolder).listAll().then(function(res) {
+    console.log(firebase.storage().ref(pathFolder));
     res.prefixes.forEach(function(folderRef) {
       // All the prefixes under listRef.
       console.log(folderRef.name);
@@ -452,7 +449,6 @@
           console.log("Download Clicked");
             // Get the download URL
             itemRef.getDownloadURL().then(function(url) {
-             
               // Insert url into an <img> tag to "download"
               // This can be downloaded directly:
                   var xhr = new XMLHttpRequest();
@@ -462,8 +458,12 @@
                   };
                   xhr.open('GET', url);
                   xhr.send();
+                  console.log(url);
+                  window.open(url);  
+                  $("#file_name").val(url);
+                  // $("#textarea").val(url);
+                  // document.getElementById('linkbox').innerHTML = url;
             }).catch(function(error) {
-  
               // A full list of error codes is available at
               // https://firebase.google.com/docs/storage/web/handle-errors
               switch (error.code) {
@@ -486,7 +486,6 @@
               }
             });
         });
-  
        let btnFileDelete = document.createElement("button");
         btnFileDelete.id = "btnFileDelete";
         btnFileDelete.className = "button small icon solid fa-trash smooth-scroll-middle";
@@ -523,5 +522,6 @@
   }).catch(function(error) {
     // Uh-oh, an error occurred!
   });
+});
 
-
+$("#selectFolder").trigger("change");
