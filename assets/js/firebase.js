@@ -268,23 +268,24 @@
   var fileName;
   var storageRef = storage.ref().child;
   var userFileLabel = document.getElementById("user-file-label");
-  let btnStartUpload = document.getElementById("btnStartUpload");
+ 
   // =======================================================================
   //                     Upload Button (onClick)
   // =======================================================================
   //  function processes file upload to Firestore DB
   // =======================================================================
   var pathFolder;
-  $( "#selectFolder" ).val( "docs" ); //通过value值，设置对应的选中项
-
 $("#selectFolder").change(function(){
     console.log($(this).val());
     var pathFolder=$(this).val();
 		pathFolder="main/"+ pathFolder + "/" ;
     $("#upload").load(location.href+" #upload>*","");   // refresh the uploaded files in a folder
 
-  $("#btnStartUpload").click(function(e){
-    btnStartUpload.disabled = true;
+    let btnStartUpload = document.getElementById("btnStartUpload");
+    btnStartUpload.disabled = false;
+
+  $("#btnStartUpload").one("click",function(e){
+      btnStartUpload.disabled = true;
     //Call Upload Popup
       let popover = document.createElement("div");
       popover.id = "uiavDefault";
@@ -313,7 +314,7 @@ $("#selectFolder").change(function(){
       fileSelecterbtn.hidden = true;
   
       let btnSelectFile = document.createElement("button");
-      btnSelectFile.id = "file-select";
+      btnSelectFile.id = "file-selected";
       btnSelectFile.className = "button small wide smooth-scroll-middle";
       btnSelectFile.textContent = "Select File";
   
@@ -404,7 +405,6 @@ $("#selectFolder").change(function(){
   // Create a reference under which you want to list
   // Find all the prefixes and items.
   window.onload = firebase.storage().ref(pathFolder).listAll().then(function(res) {
-    console.log(firebase.storage().ref(pathFolder));
     res.prefixes.forEach(function(folderRef) {
       // All the prefixes under listRef.
       console.log(folderRef.name);
@@ -524,4 +524,6 @@ $("#selectFolder").change(function(){
   });
 });
 
+$("#selectFolder").val( "docs" ); //通过value值，设置对应的选中项
 $("#selectFolder").trigger("change");
+
