@@ -58,12 +58,11 @@
 						</div> -->
 						<div class="content align-center">
 							<div id="documents" class="align-left">
-								<h3>Documents (select a folder):</h3>
+								<h3>Document (select a folder):</h3>
 								<p> <select id="selectFolder" style="width: 40%;">
 									<option value ="docs" >docs</option>
 									<option value ="meeting">meeting</option>
 									<option value ="configuration">configuration</option>
-									<option value ="RINGS">RINGS</option>
 									<option value="photo">photo</option>
 									<option value="other">other</option>
 								  </select> 
@@ -74,7 +73,7 @@
 										<div id = "files" class = "page-content">
 
 										</div>
-										<!-- <label id="user-file-label"></label> -->
+										<label id="user-file-label"></label>
 									</ul>
 								</div>
 
@@ -130,7 +129,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="assets/js/firebase.js"></script>
-		<script src="assets/js/menu.js"></script>
+		<!-- <script src="assets/js/menu.js"></script> -->
 
 		<script>
 			firebase.auth().onAuthStateChanged(function(user){
